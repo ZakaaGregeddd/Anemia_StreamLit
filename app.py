@@ -109,8 +109,8 @@ if st.button("🔍 Analisis Sekarang"):
             st.write("Profil sel darah pasien dalam batas normal.")
             
     with col2:
-        st.metric(label="Tingkat Keyakinan AI", value=f"{prob:.1%}")
+        st.metric(label="Tingkat Kemungkinan Terkena Anemia", value=f"{prob:.1%}")
         st.progress(prob)
 
     # Disclaimer
-    st.info("⚠️ Catatan: Hasil ini menggunakan model Random Forest Robust yang berfokus pada indeks sel darah (MCH, MCV, MCHC).")
+    st.info("⚠️ Catatan: Hasil ini menggunakan model Random Forest Robust yang berfokus pada indeks sel darah (MCH, MCV, MCHC) dan fitur turunan berupa Mean_RCF dan Hb_MCH_Ratio")
