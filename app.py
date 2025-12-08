@@ -18,10 +18,6 @@ def load_model():
     try:
         model = joblib.load(model_path)
         return model
-    except FileNotFoundError:
-        st.error(f"❌ File model tidak ditemukan di: {model_path}")
-        st.warning("Pastikan Anda sudah menyimpan model ke folder 'models/'.")
-        return None
     except Exception as e:
         st.error(f"Terjadi kesalahan saat memuat model: {e}")
         return None
@@ -41,7 +37,7 @@ st.divider()
 st.sidebar.header("📝 Masukkan Data Pasien")
 
 def user_input_features():
-    # Gender (Diperlukan untuk data entry, meski nanti dihapus oleh model ini)
+    # Gender 
     gender_label = st.sidebar.selectbox("Jenis Kelamin", ("Wanita", "Pria"))
     gender = 0 if gender_label == "Wanita" else 1
     
@@ -74,10 +70,10 @@ if st.button("🔍 Analisis Sekarang"):
         st.stop()
 
     # --- 1. FEATURE ENGINEERING ---
-    # Langkah ini WAJIB dilakukan sebelum data masuk ke model
+    # WAJIB 
     process_df = input_df.copy()
     
-    # Hitung Mean Red Cell Features
+    # Hitung Mean
     process_df['Mean_RCF'] = (process_df['MCHC'] + process_df['MCV'] + process_df['MCH']) / 3
     
     # Hitung Rasio Hb/MCH (Menghindari pembagian nol)
@@ -87,12 +83,12 @@ if st.button("🔍 Analisis Sekarang"):
 
     # --- 2. PERSIAPAN KHUSUS RANDOM FOREST ROBUST ---
     # Model 'rf_robust' dilatih TANPA fitur Gender dan Hemoglobin.
-    # Kita harus membuang kolom tersebut agar sesuai dengan input yang diharapkan model.
+    # buang kolom agar sesuai dengan input yang diharapkan model.
     final_features = process_df.drop(columns=['Gender', 'Hemoglobin'])
 
     # --- 3. PREDIKSI ---
-    prediction = model.predict(final_features)[0]
-    prob = model.predict_proba(final_features)[:, 1][0]
+    prediction = model.predict(final_features)[0] # melakukan prediksi dengan model Random Forest Robust berdasarkan fitur yang telah disiapkan yaitu final_features (tanpa Gender dan Hemoglobin)
+    prob = model.predict_proba(final_features)[:, 1][0] # probabilitas kelas positif (anemia)
 
     # --- 4. TAMPILKAN HASIL ---
     st.divider()
