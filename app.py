@@ -84,6 +84,9 @@ if st.button("🔍 Analisis Sekarang"):
     # --- 2. PERSIAPAN KHUSUS RANDOM FOREST ROBUST ---
     # Model 'rf_all_features_model' dilatih dengan semua fitur.
     # Pastikan urutan kolom sesuai dengan yang digunakan saat training.
+
+    #####
+   # final_features = process_df[['MCH', 'MCHC', 'MCV', 'Mean_RCF', 'Hb_MCH_Ratio']] #untuk pengecualian fitur utama
     final_features = process_df[['Gender', 'Hemoglobin', 'MCH', 'MCHC', 'MCV', 'Mean_RCF', 'Hb_MCH_Ratio']]
 
     # --- 3. PREDIKSI ---
