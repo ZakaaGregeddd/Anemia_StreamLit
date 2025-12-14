@@ -112,4 +112,4 @@ if st.button("🔍 Analisis Sekarang"):
         st.progress(prob)
 
     # Disclaimer
-    st.info("⚠️ Catatan: Hasil ini menggunakan model Random Forest Robust yang berfokus pada indeks sel darah (MCH, MCV, MCHC) dan fitur turunan berupa Mean_RCF dan Hb_MCH_Ratio")
+    st.info("⚠️ Catatan: Hasil ini menggunakan model Random Forest Robust yang berfokus pada indeks sel darah (Gender, Hb, MCH, MCV, MCHC) dan fitur turunan berupa Mean_RCF dan Hb_MCH_Ratio")
