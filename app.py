@@ -82,9 +82,9 @@ if st.button("🔍 Analisis Sekarang"):
     )
 
     # --- 2. PERSIAPAN KHUSUS RANDOM FOREST ROBUST ---
-    # Model 'rf_robust' dilatih TANPA fitur Gender dan Hemoglobin.
-    # buang kolom agar sesuai dengan input yang diharapkan model.
-    final_features = process_df.drop(columns=['Gender', 'Hemoglobin'])
+    # Model 'rf_all_features_model' dilatih dengan semua fitur.
+    # Pastikan urutan kolom sesuai dengan yang digunakan saat training.
+    final_features = process_df[['Gender', 'Hemoglobin', 'MCH', 'MCHC', 'MCV', 'Mean_RCF', 'Hb_MCH_Ratio']]
 
     # --- 3. PREDIKSI ---
     prediction = model.predict(final_features)[0] # melakukan prediksi dengan model Random Forest Robust berdasarkan fitur yang telah disiapkan yaitu final_features (tanpa Gender dan Hemoglobin)
