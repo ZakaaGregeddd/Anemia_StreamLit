@@ -42,10 +42,10 @@ def user_input_features():
     gender = 0 if gender_label == "Wanita" else 1
     
     # Input Numerik
-    hemoglobin = st.sidebar.number_input("Hemoglobin (g/dL)", min_value=0.0, max_value=25.0, value=13.0, step=0.1)
-    mch = st.sidebar.number_input("MCH (pg)", min_value=0.0, max_value=50.0, value=22.0, step=0.1)
-    mchc = st.sidebar.number_input("MCHC (g/dL)", min_value=0.0, max_value=50.0, value=30.0, step=0.1)
-    mcv = st.sidebar.number_input("MCV (fL)", min_value=0.0, max_value=150.0, value=85.0, step=0.1)
+    hemoglobin = st.sidebar.number_input("Hemoglobin (g/dL)", min_value=0.0, max_value=25.0, value=14.0, step=0.1)
+    mch = st.sidebar.number_input("MCH (pg)", min_value=0.0, max_value=50.0, value=30.0, step=0.1)
+    mchc = st.sidebar.number_input("MCHC (g/dL)", min_value=0.0, max_value=50.0, value=34.0, step=0.1)
+    mcv = st.sidebar.number_input("MCV (fL)", min_value=0.0, max_value=150.0, value=80.0, step=0.1)
     
     data = {
         'Gender': gender,
