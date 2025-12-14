@@ -14,7 +14,7 @@ st.set_page_config(
 @st.cache_resource
 def load_model():
     """Hanya memuat model Random Forest Robust."""
-    model_path = 'models/rf_robust_model.pkl'
+    model_path = 'models/rf_all_features_model.pkl'
     try:
         model = joblib.load(model_path)
         return model
